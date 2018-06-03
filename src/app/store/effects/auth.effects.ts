@@ -15,7 +15,8 @@ import {
     LogIn, LogInSuccess, LogInFailure,
     SignUp, SignUpSuccess, SignUpFailure,
     LogOut,
-  } from '../actions/auth.actions';
+    GetStatus,
+} from '../actions/auth.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -95,5 +96,15 @@ export class AuthEffects {
             localStorage.removeItem('token');
         })
     );
+
+    @Effect({ dispatch: false })
+    GetStatus: Observable<any> = this.actions
+        .ofType(AuthActionTypes.GET_STATUS)
+        .map((action: GetStatus) => action)
+        .switchMap(payload => {
+            return this.authService.getStatus();
+        });
+
+  
 
 }

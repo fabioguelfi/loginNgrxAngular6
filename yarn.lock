@@ -175,6 +175,10 @@
   dependencies:
     tslib "^1.9.0"
 
+"@ngrx/store@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-6.0.1.tgz#02c806ce20c698b997e81f5671e0edc07d32cf86"
+
 "@ngtools/webpack@6.0.7":
   version "6.0.7"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-6.0.7.tgz#e396330756c1d8999abc224aeb23d0011662f77b"

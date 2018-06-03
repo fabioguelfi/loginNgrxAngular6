@@ -18,13 +18,15 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/app.states';
 import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
 import { AuthService } from './services/auth.service';
+import { StatusComponent } from './components/status/status.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     SignUpComponent,
-    LogInComponent
+    LogInComponent,
+    StatusComponent
   ],
   imports: [
     BrowserModule,

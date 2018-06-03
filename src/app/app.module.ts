@@ -20,6 +20,8 @@ import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor
 import { AuthService } from './services/auth.service';
 import { StatusComponent } from './components/status/status.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import { CartComponent } from './components/cart/cart.component';
+import { CartDetailComponent } from './components/cart-detail/cart-detail.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
     LandingComponent,
     SignUpComponent,
     LogInComponent,
-    StatusComponent
+    StatusComponent,
+    CartComponent,
+    CartDetailComponent
   ],
   imports: [
     BrowserModule,

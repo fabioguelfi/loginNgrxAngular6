@@ -16,7 +16,11 @@ import {
     SignUp, SignUpSuccess, SignUpFailure,
     LogOut,
     GetStatus,
+    GetProducts,
+    ProductsSuccess,
+    ProductsFailure,
 } from '../actions/auth.actions';
+import { ProductsService } from '../../services/products.service';
 
 @Injectable()
 export class AuthEffects {
@@ -25,6 +29,7 @@ export class AuthEffects {
         private actions: Actions,
         private authService: AuthService,
         private router: Router,
+        private productsSevice: ProductsService
     ) { }
 
     // effects go here
@@ -44,6 +49,35 @@ export class AuthEffects {
                     return Observable.of(new LogInFailure({ error: error }));
                 });
         });
+
+    @Effect()
+    GetProducts: Observable<any> = this.actions
+        .ofType(AuthActionTypes.GET_PRODUCTS)
+        .map((action: GetProducts) => action.payload)
+        .switchMap(payload => {
+            return this.productsSevice.getProducts()
+                .map((products) => {
+                    // console.log([products[0]]);
+                    return new ProductsSuccess({ products: products })
+                })
+                .catch((error) => {
+                    console.log(error);
+                    return Observable.of(new ProductsFailure({ error: error }));
+                })
+        })
+
+    @Effect({ dispatch: false })
+    ProductsSuccess: Observable<any> = this.actions.pipe(
+        ofType(AuthActionTypes.PRODUCTS_SUCCESS),
+        tap((product) => {
+            console.log(product);
+        })
+    );
+
+    @Effect({ dispatch: false })
+    ProductsFailure: Observable<any> = this.actions.pipe(
+        ofType(AuthActionTypes.PRODUCTS_FAILURE)
+    )
 
     @Effect({ dispatch: false })
     LogInSuccess: Observable<any> = this.actions.pipe(
@@ -104,6 +138,5 @@ export class AuthEffects {
         .switchMap(payload => {
             return this.authService.getStatus();
         });
-
 
 }

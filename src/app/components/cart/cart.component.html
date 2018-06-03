@@ -1,0 +1,6 @@
+<div *ngIf="listProducts">
+    <!-- {{ listProducts.products | json }} -->
+    <div *ngFor="let product of listProducts.products">
+      <h5>{{ product?.title }}</h5>
+    </div>
+</div>

@@ -6,7 +6,6 @@ import { User } from '../models/user';
 @Injectable({
   providedIn: 'root'
 })
-
 export class AuthService {
 
   private BASE_URL = 'http://localhost:1337';

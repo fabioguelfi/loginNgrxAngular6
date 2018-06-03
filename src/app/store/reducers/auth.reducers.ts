@@ -40,6 +40,18 @@ export function reducer(state = initialState, action: All): State {
     case AuthActionTypes.LOGOUT: {
       return initialState;
     }
+    case AuthActionTypes.PRODUCTS_SUCCESS: {
+      return {
+        ...state,
+        products: action.payload.products
+      }
+    }
+    case AuthActionTypes.PRODUCTS_FAILURE: {
+      return {
+        ...state,
+        errorMessage: 'Webservice response error'
+      }
+    }
     default: {
       return state;
     }

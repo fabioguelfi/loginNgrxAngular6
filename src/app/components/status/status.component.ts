@@ -14,7 +14,7 @@ export class StatusComponent implements OnInit {
   constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
-    this.store.dispatch(new GetStatus);
+    this.store.dispatch(new GetStatus({}));
   }
 
 }

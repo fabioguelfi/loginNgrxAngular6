@@ -1,3 +1,8 @@
-<p>
-  cart-detail works!
-</p>
+<button (click)="getProducts()">more products</button>
+<div *ngIf="listProducts">
+    <!-- {{ listProducts.products | json }} -->
+    <p *ngIf="listProducts.errorMessage">{{ listProducts.errorMessage }}</p>
+    <div *ngFor="let product of listProducts.products">
+      <h5>{{ product?.id }}</h5>
+    </div>
+</div>

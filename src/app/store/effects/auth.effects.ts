@@ -55,13 +55,14 @@ export class AuthEffects {
         .ofType(AuthActionTypes.GET_PRODUCTS)
         .map((action: GetProducts) => action.payload)
         .switchMap(payload => {
-            return this.productsSevice.getProducts()
+            console.log(payload.start)
+            return this.productsSevice.getProducts(payload.start, payload.end)
                 .map((products) => {
                     // console.log([products[0]]);
                     return new ProductsSuccess({ products: products })
                 })
                 .catch((error) => {
-                    console.log(error);
+                    // console.log(error);
                     return Observable.of(new ProductsFailure({ error: error }));
                 })
         })

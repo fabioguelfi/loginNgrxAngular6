@@ -12,6 +12,11 @@ export interface State {
   errorMessage: string | null;
   // products
   products: Array<Product>;
+  // start product
+  start: number;
+  // end product
+  end: number;
+
 }
 
 export const initialState: State = {
@@ -19,6 +24,8 @@ export const initialState: State = {
   user: null,
   errorMessage: null,
   products: [],
+  start: 0,
+  end: 10,
 };
 
 export interface AppState {

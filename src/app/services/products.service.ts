@@ -14,8 +14,8 @@ export class ProductsService {
     private http: HttpClient
   ) { }
 
-  public getProducts(): Observable<any> {
-    const url = '/photos?_start=0&_limit=20';
+  public getProducts(start: number = 0, end: number = 10): Observable<any> {
+    const url = `/photos?_start=${start}&_end=${end}`;
     return this.http.get<Product[]>(`${this.BASE_URL}${url}`)
   }
 

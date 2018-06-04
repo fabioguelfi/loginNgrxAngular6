@@ -14,21 +14,30 @@ import { Observable } from 'rxjs';
 export class CartComponent implements OnInit {
 
   public listProducts;
+  public end = 10;
 
   constructor(
     private store: Store<AppState>
   ) {
-    this.store.select(selectAuthState).subscribe(
-      res => this.listProducts = res
-    )
-    setTimeout(() => {
-      console.log(this.listProducts)  
-    }, 1000);
-    
+
   }
 
   ngOnInit() {
-    this.store.dispatch(new GetProducts({}))
+    // this.store.dispatch(new GetProducts({}))
+  }
+
+  public getProducts(): void {
+    
+    this.store.dispatch(new GetProducts({ start: 0, end: this.end }))
+    this.store.select(selectAuthState).subscribe(
+      res => this.listProducts = res
+    )
+
+    console.log(this.listProducts)
+    if (this.end >= 10) {
+      this.end = this.end + this.end;
+    }
+
   }
 
 }
